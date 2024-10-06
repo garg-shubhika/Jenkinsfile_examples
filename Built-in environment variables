@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Job Name: ${env.JOB_NAME}"
+                echo "Build ID: ${env.BUILD_ID}"
+                echo "Branch Name: ${env.BRANCH_NAME}"
+            }
+        }
+    }
+}
