@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Define a local variable
+                    def localVar = "local production"
+                    // Echo the local variable directly
+                    echo localVar
+                }
+            }
+        }
+    }
+}
