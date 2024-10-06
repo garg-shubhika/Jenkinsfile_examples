@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Build stage"
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression { env.BRANCH_NAME == 'main' } // Check if the current branch is 'main'
+            }
+            steps {
+                echo "This stage runs when the pipeline is triggered from the main branch."
+            }
+        }
+    }
+}
