@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Build stage"
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression { currentBuild.getCause(hudson.model.Cause.UserIdCause) != null }
+            }
+            steps {
+                echo "This stage runs when manually triggered"
+            }
+        }
+    }
+}
