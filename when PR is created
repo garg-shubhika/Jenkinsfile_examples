@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "This stage runs for all builds."
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression { env.CHANGE_ID != null }
+            }
+            steps {
+                echo "This stage runs only for pull requests."
+            }
+        }
+    }
+}
+
+// If the build is triggered by a pull request, env.CHANGE_ID will have a value (usually the ID or number of the pull request).
