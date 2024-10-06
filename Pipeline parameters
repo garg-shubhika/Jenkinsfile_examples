@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'DEPLOY_ENV', defaultValue: 'production', description: 'Deployment Environment')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Environment: ${params.DEPLOY_ENV}"
+            }
+        }
+    }
+}
