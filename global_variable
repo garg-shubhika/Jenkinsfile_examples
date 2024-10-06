@@ -1,0 +1,12 @@
+def envir = "production"
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Environment: ${envir}" 
+            }
+        }
+    }
+}
