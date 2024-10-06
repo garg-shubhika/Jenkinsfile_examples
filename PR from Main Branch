@@ -1,0 +1,19 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                echo "This is the Build stage"
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression { env.CHANGE_ID != null && env.BRANCH_NAME == 'main' } // Enclose 'main' in quotes
+            }
+            steps {
+                echo "This stage runs when the pull request is created from the main branch"
+            }
+        }
+    }
+}
